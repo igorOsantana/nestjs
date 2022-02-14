@@ -22,8 +22,19 @@ describe('AuthService', () => {
       password: 'any_password',
     }
     const loginSpy = jest.spyOn(authService, 'login');
-    
+
     authService.login(authentication);
     expect(loginSpy).toBeCalledWith(authentication)
+  });
+
+  it('should throw if login throws', () => {
+    const authentication = {
+      email: 'any_email@mail.com',
+      password: 'any_password',
+    }
+    jest.spyOn(authService, 'login').mockRejectedValueOnce(new Error());
+
+    const promise = authService.login(authentication);
+    expect(promise).rejects.toThrow()
   });
 });
