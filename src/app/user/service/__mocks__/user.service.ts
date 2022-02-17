@@ -5,5 +5,5 @@ export const UserService = jest.fn().mockReturnValue({
   findOne: jest.fn().mockResolvedValue(userStub()),
   create: jest.fn().mockResolvedValue(userStub()),
   update: jest.fn().mockResolvedValue(userStub()),
-  remove: jest.fn().mockResolvedValue('any_response'),
+  remove: jest.fn().mockResolvedValue(null),
 })

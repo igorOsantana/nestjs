@@ -154,6 +154,11 @@ describe('UserController', () => {
         expect(userService.remove).toHaveBeenCalledTimes(1)
         await expect(promise).rejects.toThrowError()
       })
+
+      test('then it should return null on success ', async () => {
+        const result = await userController.delete(user.id)
+        expect(result).toBeNull()
+      })
     })
   })
 })
