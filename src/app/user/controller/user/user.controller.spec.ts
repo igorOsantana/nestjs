@@ -21,7 +21,7 @@ describe('UserController', () => {
     jest.clearAllMocks()
   })
 
-  describe('create', () => {
+  describe('create method', () => {
     describe('when create is called', () => {
       let newUser: CreateUserDto
 
@@ -42,6 +42,11 @@ describe('UserController', () => {
 
         expect(userService.create).toHaveBeenCalledTimes(1)
         await expect(promise).rejects.toThrowError()
+      })
+
+      test('then it should return a new user on success', async () => {
+        const user = await userController.create(newUser)
+        expect(user).toEqual(userStub())
       })
     })
   })
