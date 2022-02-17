@@ -60,6 +60,11 @@ describe('UserController', () => {
 
         await expect(promise).rejects.toThrowError()
       })
+
+      test('then it should return a User on success', async () => {
+        const userFounded = await userController.findOne(user.id)
+        expect(userFounded).toEqual(user)
+      })
     })
   })
 
