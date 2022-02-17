@@ -97,4 +97,21 @@ describe('UserController', () => {
       })
     })
   })
+
+  describe('update method', () => {
+    describe('when update is called', () => {
+      let user: User
+      let userUpdated: User
+
+      beforeEach(() => {
+        user = userStub()
+        userUpdated = { ...userStub(), name: 'update_name' }
+      })
+
+      test('then it should call UserService', async () => {
+        await userController.update(user.id, user)
+        expect(userService.update).toHaveBeenCalledWith(user.id, user)
+      })
+    })
+  })
 })

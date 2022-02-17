@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common'
+import { Body, Controller, Get, Post, Put } from '@nestjs/common'
 import { Args } from '@nestjs/graphql'
 import { CreateUserDto } from '../../dto/create-user.dto'
 import { User } from '../../entities/user.entity'
@@ -23,8 +23,12 @@ export class UserController {
     return this.userService.create(newUser)
   }
 
-  update() {
-    return 'Hello world!'
+  @Put(':id')
+  async update(
+    @Args('id') id: string,
+    @Body() updateUserInput: User,
+  ): Promise<User> {
+    return this.userService.update(id, updateUserInput)
   }
 
   delete() {
