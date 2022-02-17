@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Put } from '@nestjs/common'
+import { Body, Controller, Delete, Get, Post, Put } from '@nestjs/common'
 import { Args } from '@nestjs/graphql'
 import { CreateUserDto } from '../../dto/create-user.dto'
 import { User } from '../../entities/user.entity'
@@ -31,7 +31,8 @@ export class UserController {
     return this.userService.update(id, updateUserInput)
   }
 
-  delete() {
-    return 'Hello world!'
+  @Delete(':id')
+  async delete(@Args('id') id: string): Promise<string> {
+    return this.userService.remove(id)
   }
 }

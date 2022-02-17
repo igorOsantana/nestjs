@@ -131,4 +131,19 @@ describe('UserController', () => {
       })
     })
   })
+
+  describe('delete method', () => {
+    describe('when delete is called', () => {
+      let user: User
+
+      beforeEach(() => {
+        user = userStub()
+      })
+
+      test('then it should call UserService', async () => {
+        await userController.delete(user.id)
+        expect(userService.remove).toHaveBeenCalledWith(user.id)
+      })
+    })
+  })
 })
