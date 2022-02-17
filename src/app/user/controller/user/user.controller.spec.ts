@@ -24,7 +24,7 @@ describe('UserController', () => {
 
   describe('find method', () => {
     describe('when find method is called', () => {
-      test('then it should call UserService', async () => {
+      test('then it should call UserService with correct values', async () => {
         userController.find()
         expect(userService.findAll).toHaveBeenCalled()
       })
@@ -49,7 +49,7 @@ describe('UserController', () => {
         user = userStub()
       })
 
-      test('then it should call UserService', async () => {
+      test('then it should call UserService with correct values', async () => {
         await userController.findOne(user.id)
         expect(userService.findOne).toHaveBeenCalled()
       })
@@ -76,7 +76,7 @@ describe('UserController', () => {
         newUser = new CreateUserDto(userStub())
       })
 
-      test('then it should call UserService', async () => {
+      test('then it should call UserService with correct values', async () => {
         await userController.create(newUser)
         expect(userService.create).toHaveBeenCalledWith(newUser)
       })
@@ -108,7 +108,7 @@ describe('UserController', () => {
         userUpdated = { ...userStub(), name: 'update_name' }
       })
 
-      test('then it should call UserService', async () => {
+      test('then it should call UserService with correct values', async () => {
         await userController.update(user.id, user)
         expect(userService.update).toHaveBeenCalledWith(user.id, user)
       })
@@ -140,7 +140,7 @@ describe('UserController', () => {
         user = userStub()
       })
 
-      test('then it should call UserService', async () => {
+      test('then it should call UserService with correct values', async () => {
         await userController.delete(user.id)
         expect(userService.remove).toHaveBeenCalledWith(user.id)
       })
