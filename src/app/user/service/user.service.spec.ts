@@ -1,5 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing'
 import { UserService } from './user.service'
+import { userStub } from '../../../../test/stubs/user.stub'
 
 jest.mock('./user.service')
 
@@ -20,6 +21,11 @@ describe('UserService', () => {
         await service.findAll()
         expect(service.findAll).toHaveBeenCalledTimes(1)
       })
+    })
+
+    test('then it should return an array of User on success', async () => {
+      const users = await service.findAll()
+      expect(users).toEqual([userStub()])
     })
   })
 })
