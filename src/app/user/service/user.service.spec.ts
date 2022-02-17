@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing'
 import { UserService } from './user.service'
 import { userStub } from '../../../../test/stubs/user.stub'
 import { User } from '../entities/user.entity'
+import { CreateUserDto } from '../dto/create-user.dto'
 
 jest.mock('./user.service')
 
@@ -46,6 +47,21 @@ describe('UserService', () => {
       test('then it should return a User on success', async () => {
         const userFounded = await service.findOne(user.id)
         expect(userFounded).toEqual(userStub())
+      })
+    })
+  })
+
+  describe('create method', () => {
+    describe('when create is called', () => {
+      let newUser: CreateUserDto
+
+      beforeEach(() => {
+        newUser = new CreateUserDto(userStub())
+      })
+
+      test('then it should be called', async () => {
+        await service.create(newUser)
+        expect(service.create).toHaveBeenCalledTimes(1)
       })
     })
   })
