@@ -1,8 +1,8 @@
 import { Body, Controller, Delete, Get, Post, Put } from '@nestjs/common'
 import { Args } from '@nestjs/graphql'
-import { CreateUserDto } from '../../dto/create-user.dto'
-import { User } from '../../entities/user.entity'
-import { UserService } from '../../service/user.service'
+import { CreateUserDto } from '../dto/create-user.dto'
+import { User } from '../entities/user.entity'
+import { UserService } from '../service/user.service'
 
 @Controller('users')
 export class UserController {

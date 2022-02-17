@@ -1,11 +1,11 @@
 import { Test, TestingModule } from '@nestjs/testing'
 import { UserController } from './user.controller'
-import { UserService } from '../../service/user.service'
-import { CreateUserDto } from '../../dto/create-user.dto'
-import { userStub } from '../../../../../test/stubs/user.stub'
-import { User } from '../../entities/user.entity'
+import { UserService } from '../service/user.service'
+import { CreateUserDto } from '../dto/create-user.dto'
+import { userStub } from '../../../../test/stubs/user.stub'
+import { User } from '../entities/user.entity'
 
-jest.mock('../../service/user.service')
+jest.mock('../service/user.service')
 
 describe('UserController', () => {
   let userController: UserController
