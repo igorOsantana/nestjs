@@ -1,7 +1,7 @@
-import { Resolver, Query, Args } from '@nestjs/graphql';
-import { AuthService } from '../service/auth.service';
-import { Auth } from '../entities/auth.entity';
-import { AuthDto } from '../dto/auth.dto';
+import { Resolver, Query, Args } from '@nestjs/graphql'
+import { AuthService } from '../service/auth.service'
+import { Auth } from '../entities/auth.entity'
+import { AuthDto } from '../dto/auth.dto'
 
 @Resolver(() => Auth)
 export class AuthResolver {
@@ -9,6 +9,6 @@ export class AuthResolver {
 
   @Query(() => Auth)
   auth(@Args('authInput') authInput: AuthDto) {
-    return this.authService.auth(authInput);
+    return this.authService.auth(authInput)
   }
 }

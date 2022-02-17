@@ -1,5 +1,5 @@
-import { InputType, Field } from '@nestjs/graphql';
-import { IsEmail, IsString, MinLength, MaxLength } from 'class-validator';
+import { InputType, Field } from '@nestjs/graphql'
+import { IsEmail, IsString, MinLength, MaxLength } from 'class-validator'
 
 @InputType()
 export class AuthDto {
@@ -8,11 +8,11 @@ export class AuthDto {
   @MaxLength(255)
   @IsEmail()
   @Field({ nullable: false })
-  email: string;
-  
+  email: string
+
   @IsString()
   @MinLength(6)
   @MaxLength(255)
   @Field({ nullable: false })
-  password: string;
+  password: string
 }

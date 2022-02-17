@@ -8,10 +8,10 @@ import {
 } from 'typeorm'
 
 @ObjectType()
-@Entity({ name: 'user' })
+@Entity({ name: 'users' })
 export class User {
   @Field()
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn()
   id: string
 
   @Field()
