@@ -30,8 +30,13 @@ describe('UserController', () => {
       })
 
       test('then it should throw an exception if UserService throws', async () => {
-        jest.spyOn(userService, 'findAll').mockRejectedValue(new Error())
+        jest.spyOn(userService, 'findAll').mockRejectedValueOnce(new Error())
         await expect(userController.find()).rejects.toThrowError()
+      })
+
+      test('then it should return an array of User on success', async () => {
+        const users = await userController.find()
+        expect(users).toEqual([userStub()])
       })
     })
   })
