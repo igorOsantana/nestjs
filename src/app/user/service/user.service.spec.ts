@@ -42,6 +42,11 @@ describe('UserService', () => {
         await service.findOne(user.id)
         expect(service.findOne).toHaveBeenCalledTimes(1)
       })
+
+      test('then it should return a User on success', async () => {
+        const userFounded = await service.findOne(user.id)
+        expect(userFounded).toEqual(userStub())
+      })
     })
   })
 })
