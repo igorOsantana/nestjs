@@ -122,6 +122,13 @@ describe('UserController', () => {
         expect(userService.update).toHaveBeenCalledTimes(1)
         await expect(promise).rejects.toThrowError()
       })
+
+      test('then it should return a user updated on success', async () => {
+        jest.spyOn(userService, 'update').mockResolvedValueOnce(userUpdated)
+        const updatedUser = await userController.update(user.id, user)
+
+        expect(updatedUser).toEqual(userUpdated)
+      })
     })
   })
 })
