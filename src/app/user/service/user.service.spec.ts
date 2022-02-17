@@ -39,7 +39,7 @@ describe('UserService', () => {
         user = userStub()
       })
 
-      test('then it should be called', async () => {
+      test('then it should be call', async () => {
         await service.findOne(user.id)
         expect(service.findOne).toHaveBeenCalledTimes(1)
       })
@@ -59,9 +59,16 @@ describe('UserService', () => {
         newUser = new CreateUserDto(userStub())
       })
 
-      test('then it should be called', async () => {
+      test('then it should be call', async () => {
         await service.create(newUser)
         expect(service.create).toHaveBeenCalledTimes(1)
+      })
+
+      test('then it should be called with correct values', async () => {
+        const userCreated = await service.create(newUser)
+
+        expect(userCreated).toEqual(userStub())
+        expect(service.create).toHaveBeenCalledWith(newUser)
       })
     })
   })
