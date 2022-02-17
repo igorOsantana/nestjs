@@ -28,6 +28,11 @@ describe('UserController', () => {
         userController.find()
         expect(userService.findAll).toHaveBeenCalled()
       })
+
+      test('then it should throw an exception if UserService throws', async () => {
+        jest.spyOn(userService, 'findAll').mockRejectedValue(new Error())
+        await expect(userController.find()).rejects.toThrowError()
+      })
     })
   })
 
