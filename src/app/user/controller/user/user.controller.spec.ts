@@ -112,6 +112,16 @@ describe('UserController', () => {
         await userController.update(user.id, user)
         expect(userService.update).toHaveBeenCalledWith(user.id, user)
       })
+
+      test('then it should throw an exception if UserService throws', async () => {
+        jest.spyOn(userService, 'update').mockImplementationOnce(() => {
+          throw new Error()
+        })
+        const promise = userController.update(user.id, user)
+
+        expect(userService.update).toHaveBeenCalledTimes(1)
+        await expect(promise).rejects.toThrowError()
+      })
     })
   })
 })
