@@ -29,6 +29,11 @@ describe('UserController', () => {
         newUser = new CreateUserDto(userStub())
       })
 
+      test('then it should call UserService', () => {
+        userController.create(newUser)
+        expect(userService.create).toHaveBeenCalledWith(newUser)
+      })
+
       test('then it should throw an exception if UserService throws', async () => {
         jest.spyOn(userService, 'create').mockImplementationOnce(() => {
           throw new Error()
