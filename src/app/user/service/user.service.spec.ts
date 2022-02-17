@@ -1,6 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing'
 import { UserService } from './user.service'
 
+jest.mock('./user.service')
+
 describe('UserService', () => {
   let service: UserService
 
@@ -14,7 +16,10 @@ describe('UserService', () => {
 
   describe('findAll method', () => {
     describe('when findAll is called', () => {
-      test('then it should', () => {})
+      test('then it should be called', async () => {
+        await service.findAll()
+        expect(service.findAll).toHaveBeenCalledTimes(1)
+      })
     })
   })
 })
