@@ -144,6 +144,16 @@ describe('UserController', () => {
         await userController.delete(user.id)
         expect(userService.remove).toHaveBeenCalledWith(user.id)
       })
+
+      test('then it should throw an exception if UserService throws', async () => {
+        jest.spyOn(userService, 'remove').mockImplementationOnce(() => {
+          throw new Error()
+        })
+        const promise = userController.delete(user.id)
+
+        expect(userService.remove).toHaveBeenCalledTimes(1)
+        await expect(promise).rejects.toThrowError()
+      })
     })
   })
 })
