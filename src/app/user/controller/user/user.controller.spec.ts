@@ -3,6 +3,7 @@ import { UserController } from './user.controller'
 import { UserService } from '../../service/user.service'
 import { CreateUserDto } from '../../dto/create-user.dto'
 import { userStub } from '../../../../../test/stubs/user.stub'
+import { User } from '../../entities/user.entity'
 
 jest.mock('../../service/user.service')
 
@@ -21,6 +22,15 @@ describe('UserController', () => {
     jest.clearAllMocks()
   })
 
+  describe('find method', () => {
+    describe('when find method is called', () => {
+      test('then it should call UserService', async () => {
+        userController.find()
+        expect(userService.findAll).toHaveBeenCalled()
+      })
+    })
+  })
+
   describe('create method', () => {
     describe('when create is called', () => {
       let newUser: CreateUserDto
@@ -29,8 +39,8 @@ describe('UserController', () => {
         newUser = new CreateUserDto(userStub())
       })
 
-      test('then it should call UserService', () => {
-        userController.create(newUser)
+      test('then it should call UserService', async () => {
+        await userController.create(newUser)
         expect(userService.create).toHaveBeenCalledWith(newUser)
       })
 
