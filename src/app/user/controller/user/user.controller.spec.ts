@@ -41,6 +41,21 @@ describe('UserController', () => {
     })
   })
 
+  describe('findOne method', () => {
+    describe('when findOne method is called', () => {
+      let user: User
+
+      beforeEach(() => {
+        user = userStub()
+      })
+
+      test('then it should call UserService', async () => {
+        await userController.findOne(user.id)
+        expect(userService.findOne).toHaveBeenCalled()
+      })
+    })
+  })
+
   describe('create method', () => {
     describe('when create is called', () => {
       let newUser: CreateUserDto

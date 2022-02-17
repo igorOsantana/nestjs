@@ -9,7 +9,7 @@ export class UserService {
     return Promise.resolve([])
   }
 
-  async findOne(id: number): Promise<User> {
+  async findOne(id: string): Promise<User> {
     return Promise.resolve(null)
   }
 
@@ -21,11 +21,11 @@ export class UserService {
     }
   }
 
-  async update(id: number, updateUserInput: UpdateUserInput): Promise<User> {
+  async update(id: string, updateUserInput: UpdateUserInput): Promise<User> {
     return Promise.resolve(null)
   }
 
-  async remove(id: number): Promise<string> {
+  async remove(id: string): Promise<string> {
     return `This action removes a #${id} user`
   }
 }
