@@ -1,43 +1,49 @@
-import { ObjectType, Field } from '@nestjs/graphql'
+import { ObjectType, Field, ID } from '@nestjs/graphql'
 import {
   Column,
   Entity,
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  DeleteDateColumn,
 } from 'typeorm'
 
 @ObjectType()
 @Entity({ name: 'users' })
 export class User {
-  @Field()
   @PrimaryGeneratedColumn()
+  @Field(() => ID)
   id: string
 
-  @Field()
   @Column({ nullable: false })
+  @Field(() => String)
   name: string
 
-  @Field()
-  @Column({ name: 'birth_date', nullable: false })
+  @Column({ nullable: false, type: 'date' })
+  @Field(() => Date)
   @CreateDateColumn()
-  birthDate: Date
+  birth_date: Date
 
-  @Field()
   @Column({ nullable: false })
+  @Field(() => String)
   email: string
 
-  @Field()
   @Column({ nullable: false })
+  @Field(() => String)
   password: string
 
+  @Column({ nullable: false, type: 'date' })
   @Field()
-  @Column({ nullable: false })
   @CreateDateColumn()
-  createdAt: Date
+  created_at: Date
 
-  @Field()
-  @Column({ nullable: false })
+  @Column({ nullable: false, type: 'date' })
+  @Field(() => Date)
   @UpdateDateColumn()
-  updatedAt: Date
+  updated_at: Date
+
+  @Column({ nullable: true, type: 'date' })
+  @Field(() => Date, { nullable: true })
+  @DeleteDateColumn()
+  deleted_at: Date
 }

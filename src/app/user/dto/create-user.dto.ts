@@ -5,7 +5,7 @@ import { User } from '../entities/user.entity'
 export class CreateUserDto {
   constructor(private readonly user?: User) {
     this.name = this.user?.name
-    this.birthDate = this.user?.birthDate
+    this.birth_date = this.user?.birth_date
     this.email = this.user?.email
     this.password = this.user?.password
   }
@@ -14,7 +14,7 @@ export class CreateUserDto {
   name: string
 
   @Field()
-  birthDate: Date
+  birth_date: Date
 
   @Field()
   email: string

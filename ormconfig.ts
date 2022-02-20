@@ -5,7 +5,7 @@ import {
 } from '@nestjs/typeorm'
 import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions'
 
-class OrmConfig {
+export default class OrmConfig {
   static getConfig(configService: ConfigService): PostgresConnectionOptions {
     return {
       type: 'postgres',
@@ -18,6 +18,9 @@ class OrmConfig {
       logging: true,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       migrations: [__dirname + '/migrations/*{.ts,.js}'],
+      cli: {
+        migrationsDir: 'src/database/migrations',
+      },
     }
   }
 }

@@ -5,10 +5,11 @@ export const userStub = (): User => {
   return {
     id: 'any_id',
     name: 'any_name',
-    birthDate: date,
+    birth_date: date,
     email: 'any_email@mail.com',
     password: 'any_password',
-    createdAt: date,
-    updatedAt: date,
+    created_at: date,
+    updated_at: date,
+    deleted_at: null,
   }
 }

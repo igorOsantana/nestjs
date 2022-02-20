@@ -54,9 +54,11 @@ describe('UserService', () => {
   describe('create method', () => {
     describe('when create is called', () => {
       let newUser: CreateUserDto
+      let user: User
 
       beforeEach(() => {
         newUser = new CreateUserDto(userStub())
+        user = userStub()
       })
 
       test('then it should be call', async () => {
@@ -70,6 +72,19 @@ describe('UserService', () => {
         expect(userCreated).toEqual(userStub())
         expect(service.create).toHaveBeenCalledWith(newUser)
       })
+
+      // test('then it should throw an exception if birthDate is greater than today', async () => {
+      //   const dateGreaterThanToday = new Date(new Date().getTime() + 1000)
+
+      //   newUser = new CreateUserDto({
+      //     ...userStub(),
+      //     birthDate: dateGreaterThanToday,
+      //   })
+      //   const teste = await service.create(newUser)
+      //   console.log('teste: ', newUser)
+      //   expect(teste).toEqual(null)
+      //   // await expect(teste).rejects.toThrow()
+      // })
     })
   })
 })

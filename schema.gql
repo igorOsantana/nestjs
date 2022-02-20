@@ -1,0 +1,56 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Auth {
+  email: String!
+  password: String!
+}
+
+type User {
+  id: ID!
+  name: String!
+  birth_date: DateTime!
+  email: String!
+  password: String!
+  created_at: DateTime!
+  updated_at: DateTime!
+  deleted_at: DateTime
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Query {
+  auth(authInput: AuthDto!): Auth!
+  findAll: [User!]!
+  findOne(id: Int!): User!
+}
+
+input AuthDto {
+  email: String!
+  password: String!
+}
+
+type Mutation {
+  createUser(createUserDto: CreateUserDto!): User!
+  updateUser(updateUserDto: UpdateUserDto!): User!
+  removeUser(id: Int!): User!
+}
+
+input CreateUserDto {
+  name: String!
+  birth_date: DateTime!
+  email: String!
+  password: String!
+}
+
+input UpdateUserDto {
+  name: String
+  birth_date: DateTime
+  email: String
+  password: String
+  id: String
+}
