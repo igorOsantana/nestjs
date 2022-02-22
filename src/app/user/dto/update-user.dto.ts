@@ -3,8 +3,8 @@ import { InputType, Field, PartialType } from '@nestjs/graphql'
 
 @InputType()
 export class UpdateUserDto extends PartialType(CreateUserDto) {
-  @Field({ nullable: true })
-  id: string
+  @Field({ nullable: false })
+  id: number
 
   @Field({ nullable: true })
   name?: string

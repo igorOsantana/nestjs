@@ -1,10 +1,8 @@
-import { ObjectType, Field, ID } from '@nestjs/graphql'
+import { ObjectType, Field, HideField } from '@nestjs/graphql'
+import { withSoftDelete } from 'src/common/models/withSoftDelete.model'
 
 @ObjectType()
-export class User {
-  @Field(() => ID)
-  id: string
-
+export class User extends withSoftDelete {
   @Field(() => String)
   name: string
 
@@ -14,15 +12,7 @@ export class User {
   @Field(() => String)
   email: string
 
+  @HideField()
   @Field(() => String)
   password: string
-
-  @Field()
-  created_at: Date
-
-  @Field(() => Date)
-  updated_at: Date
-
-  @Field(() => Date, { nullable: true })
-  deleted_at: Date
 }
