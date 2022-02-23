@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing'
 import { UserService } from './user.service'
 import { userStub } from '../../../../test/stubs/user.stub'
 import { User } from '../entities/user.entity'
-import { CreateUserDto } from '../dto/create-user.dto'
+import { CreateUserDto } from '../dto/createUser.dto'
 
 jest.mock('./user.service')
 

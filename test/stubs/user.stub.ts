@@ -3,7 +3,7 @@ import { User } from 'src/app/user/entities/user.entity'
 export const userStub = (): User => {
   const date = new Date(1, 1, 1)
   return {
-    id: 'any_id',
+    id: 1,
     name: 'any_name',
     birth_date: date,
     email: 'any_email@mail.com',

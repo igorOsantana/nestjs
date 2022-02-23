@@ -1,5 +1,5 @@
 import { ObjectType, Field, HideField } from '@nestjs/graphql'
-import { withSoftDelete } from 'src/common/models/withSoftDelete.model'
+import { withSoftDelete } from '../../../common/entities/withSoftDelete.entity'
 
 @ObjectType()
 export class User extends withSoftDelete {

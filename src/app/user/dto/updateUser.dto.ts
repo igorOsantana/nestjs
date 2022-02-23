@@ -1,4 +1,4 @@
-import { CreateUserDto } from './create-user.dto'
+import { CreateUserDto } from './createUser.dto'
 import { InputType, Field, PartialType } from '@nestjs/graphql'
 
 @InputType()
